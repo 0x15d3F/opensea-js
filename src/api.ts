@@ -363,12 +363,11 @@ export class OpenSeaAPI {
    */
   private async _fetch(apiPath: string, opts: RequestInit = {}) {
     const apiBase = this.apiBaseUrl;
-    const apiKey = this.apiKey;
     const finalUrl = apiBase + apiPath;
     const finalOpts = {
       ...opts,
       headers: {
-        ...(apiKey ? { "X-API-KEY": apiKey } : {}),
+        "x-api-key": this.apiKey,
         ...(opts.headers || {}),
       },
     };
